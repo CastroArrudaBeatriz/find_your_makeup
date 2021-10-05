@@ -4,16 +4,16 @@ class Product {
 
   final String name;
   final String price;
-  final String image_link;
-  final String product_link;
+  final String imageLink;
+  final String productLink;
 
   Product(
       {required this.id,
       required this.brand,
       required this.name,
       required this.price,
-      required this.image_link,
-      required this.product_link});
+      required this.imageLink,
+      required this.productLink});
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
@@ -21,8 +21,8 @@ class Product {
         brand: json['brand'],
         name: json['name'],
         price: json['price'],
-        image_link: json['image_link'],
-        product_link: json['product_link']);
+        imageLink: json['image_link'],
+        productLink: json['product_link']);
   }
 
   Map<String, dynamic> toJson() {
@@ -31,8 +31,8 @@ class Product {
       "brand": brand,
       "name": name,
       "price": price,
-      "image_link": image_link,
-      "product_link": product_link
+      "image_link": imageLink,
+      "product_link": productLink
     };
   }
 }

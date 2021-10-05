@@ -1,5 +1,6 @@
 import 'package:find_your_makeup/pages/home_page.dart';
-import 'package:find_your_makeup/pages/product_detail.dart';
+import 'package:find_your_makeup/pages/makeup_list.dart';
+import 'package:find_your_makeup/util/colors.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -7,18 +8,17 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Makeup'),
+        title: 'Find Your Makeup',
+        theme: ThemeData(
+            scaffoldBackgroundColor: Colors.white,
+            primaryColor: PalleteColors.basePink,
+            accentColor: PalleteColors.clearPink),
+        home: HomePage(title: 'Brands'),
         routes: {
-          '/productDetail': (context) => ProductDetail(),
-        }
-    );
+          '/makeupList': (context) => MakeupList(title: 'Makeups of Brand'),
+        });
   }
 }

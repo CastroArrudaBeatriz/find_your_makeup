@@ -14,7 +14,7 @@ class MakeupService {
       Iterable list = jsonDecode(response.body);
       return list.map((product) => Product.fromJson(product)).toList();
     } else {
-      throw Exception('Deu erro!!');
+      throw Exception('Error  to list makeups from brand :( ');
     }
   }
 

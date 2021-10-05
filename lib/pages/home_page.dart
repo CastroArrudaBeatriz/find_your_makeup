@@ -1,64 +1,65 @@
+import 'package:find_your_makeup/pages/about_page.dart';
+import 'package:find_your_makeup/pages/favorites_page.dart';
+import 'package:find_your_makeup/util/colors.dart';
 import 'package:find_your_makeup/widgets/brands_list.dart';
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+class HomePage extends StatefulWidget {
+  HomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-
+class _HomePageState extends State<HomePage> {
   int _currentScreen = 0;
 
-  final List<Widget> _screens = [BrandsList()];
+  final List<Widget> _screens = [BrandsList(), FavoritePage(), AboutPage()];
 
   @override
   void initState() {
-     super.initState();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-
     final PageController controller = PageController(initialPage: 0);
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: PageView(
-          scrollDirection: Axis.horizontal,
-          controller: controller,
-          children: _screens,
-          onPageChanged: (page) {
-            setState(() {
-              _currentScreen = page;
-            });
-          },
-        ),
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body:
+          PageView(
+            scrollDirection: Axis.horizontal,
+            controller: controller,
+            children: _screens,
+            onPageChanged: (page) {
+              setState(() {
+                _currentScreen = page;
+              });
+            },
+          )
+        ,
       bottomNavigationBar: BottomNavigationBar(
-        fixedColor: Colors.amber,
-        backgroundColor: Colors.white,
-        type: BottomNavigationBarType
-            .fixed, //this is necessary to avoid the items override the color definition
+        fixedColor: PalleteColors.darkPink,
+        backgroundColor: PalleteColors.basePink,
+        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.business_center_outlined),
-            label: "Shop",
+            icon: Icon(Icons.home),
+            label: "home",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.manage_search_outlined),
-            label: "Explore",
+            icon: Icon(Icons.favorite),
+            label: "favorites",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_outlined),
-            label: "Cart",
+            icon: Icon(Icons.info),
+            label: "about",
           ),
-
         ],
         currentIndex: _currentScreen,
         onTap: (index) => {
@@ -68,7 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
           })
         },
       ),
-
-        );
+    );
   }
 }
