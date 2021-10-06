@@ -22,7 +22,6 @@ class ProductsGridWidget extends StatelessWidget {
           return GestureDetector(
               onTap: () {
                 print('quero detalhes do produto');
-                print(products[index].imageLink);
                 //Navigator.pushNamed(context, '/makeupList', arguments: brand.name);
               },
               child: Container(
@@ -30,17 +29,19 @@ class ProductsGridWidget extends StatelessWidget {
                   children: [
                     SizedBox(height: 5,),
                     Container(
-                      width: 150,
-                      height: 150,
+                      width: 120,
+                      height: 120,
                       child:  Image.network( products[index].imageLink ,
                         errorBuilder: (context, exception, stackTrace) {
                           return Text('erro na image');
                         },),
                     ),
-                    SizedBox(height: 5,),
+                    SizedBox(height: 10,),
                     Text(
                       products[index].name,
                       overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
                     ),
                   ],
                 ),

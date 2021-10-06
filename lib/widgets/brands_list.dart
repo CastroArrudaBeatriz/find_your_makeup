@@ -12,11 +12,11 @@ class BrandsList extends StatefulWidget {
 
 class _BrandsListState extends State<BrandsList> {
   static final brands = [
-    Brand(name: "benefit", logo: "assets/images/benefit_logo.jpg"),
-    Brand(name: "clinique", logo: "assets/images/clinique_logo.png"),
+    Brand(name: "almay", logo: "assets/images/benefit_logo.jpg"),
+    Brand(name: "annabelle", logo: "assets/images/clinique_logo.png"),
     Brand(name: "colourpop", logo: "assets/images/colourpop_logo.jpeg"),
     Brand(name: "covergirl", logo: "assets/images/covergirl_logo.png"),
-    Brand(name: "l'oreal", logo: "assets/images/loreal_logo.jpeg"),
+    Brand(name: "boosh", logo: "assets/images/loreal_logo.jpeg"),
     Brand(name: "maybelline", logo: "assets/images/maybelline_logo.png"),
     Brand(name: "milani", logo: "assets/images/milani_logo.png"),
     Brand(name: "nyx", logo: "assets/images/nyx_logo.jpeg"),
