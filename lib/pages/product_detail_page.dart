@@ -35,6 +35,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
           Container(
               child: Image.network( product.imageLink ,
+                width: 300,
+                height: 300,
                 errorBuilder: (context, exception, stackTrace) {
                   return Icon(
                     Icons.error,
@@ -47,9 +49,12 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
           SizedBox(height: 10,),
 
-          Text(product.name,
-            textAlign: TextAlign.justify,
-            style: textDetailStyle(),),
+          Padding(
+            padding: const EdgeInsets.only(left: 20 , right: 20),
+            child: Text(product.name,
+              textAlign: TextAlign.center,
+              style: textDetailStyle(),),
+          ),
 
           SizedBox(height: 10,),
 
