@@ -35,8 +35,14 @@ class _BrandsListState extends State<BrandsList> {
           children: [
             Row(
               children: [
-                Expanded(child: Text("Select your favorite makeup brand") , flex: 1,),
-                Expanded(child: Image.asset("assets/images/home_ilustration.png"), flex: 2,)
+                Expanded(
+                  child: Text("Select your favorite makeup brand"),
+                  flex: 1,
+                ),
+                Expanded(
+                  child: Image.asset("assets/images/home_ilustration.png"),
+                  flex: 2,
+                )
               ],
             ),
             Expanded(
@@ -55,17 +61,23 @@ class _BrandsListState extends State<BrandsList> {
       crossAxisCount: 2,
       scrollDirection: Axis.vertical,
       children: brands
-          .map((brand) => Container(
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-                  child:  Image.asset(brand.logo),
-                ),
-                decoration: BoxDecoration(
-                  color: PalleteColors.clearPink,
-                  border: Border.all(color: PalleteColors.darkPink, width: 2),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ))
+          .map(
+            (brand) => GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/makeupList', arguments: brand.name);
+                },
+                child: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Image.asset(brand.logo),
+                  ),
+                  decoration: BoxDecoration(
+                    color: PalleteColors.clearPink,
+                    border: Border.all(color: PalleteColors.darkPink, width: 2),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                )),
+          )
           .toList(),
     );
   }

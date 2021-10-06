@@ -1,5 +1,4 @@
 class Product {
-  final int id;
   final String brand;
 
   final String name;
@@ -8,7 +7,7 @@ class Product {
   final String productLink;
 
   Product(
-      {required this.id,
+      {
       required this.brand,
       required this.name,
       required this.price,
@@ -17,7 +16,6 @@ class Product {
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
-        id: json['id'],
         brand: json['brand'],
         name: json['name'],
         price: json['price'],
@@ -27,7 +25,6 @@ class Product {
 
   Map<String, dynamic> toJson() {
     return {
-      "id": id,
       "brand": brand,
       "name": name,
       "price": price,

@@ -1,3 +1,6 @@
+import 'package:find_your_makeup/model/product.dart';
+import 'package:find_your_makeup/services/makeup_service.dart';
+import 'package:find_your_makeup/widgets/products_grid.dart';
 import 'package:flutter/material.dart';
 
 class MakeupList extends StatefulWidget {
@@ -12,6 +15,11 @@ class MakeupList extends StatefulWidget {
 
 class _MakeupListState extends State<MakeupList> with SingleTickerProviderStateMixin {
 
+  var makeupService = MakeupService();
+
+  late Future<List<Product>> productsOfBrand;
+
+
   @override
   void initState() {
     super.initState();
@@ -19,13 +27,32 @@ class _MakeupListState extends State<MakeupList> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
+
+    var brand = ModalRoute.of(context)!.settings.arguments as String;
+    productsOfBrand = makeupService.listProductsOfBrand(brand);
+
+
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: Column(
         children: [
-          Text('aqui vai a lista de makes')
+          FutureBuilder<List<Product>>(
+            future: productsOfBrand,
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return CircularProgressIndicator();
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              } else {
+                return Expanded(
+                  child: ProductsGridWidget(products: snapshot.data!),
+                );
+              }
+            },
+          ),
         ],
       )
 
