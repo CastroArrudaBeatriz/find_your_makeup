@@ -21,8 +21,7 @@ class ProductsGridWidget extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
               onTap: () {
-                print('quero detalhes do produto');
-                //Navigator.pushNamed(context, '/makeupList', arguments: brand.name);
+                Navigator.pushNamed(context, '/productDetail');
               },
               child: Container(
                 child: Column(

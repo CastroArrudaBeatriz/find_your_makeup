@@ -1,5 +1,6 @@
 import 'package:find_your_makeup/pages/home_page.dart';
 import 'package:find_your_makeup/pages/makeup_list.dart';
+import 'package:find_your_makeup/pages/product_detail.dart';
 import 'package:find_your_makeup/util/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         home: HomePage(title: 'Brands'),
         routes: {
           '/makeupList': (context) => MakeupList(title: 'Makeups of Brand'),
+          '/productDetail': (context) => PraductDetail()
         });
   }
 }
