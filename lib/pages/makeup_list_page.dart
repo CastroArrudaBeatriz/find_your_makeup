@@ -1,24 +1,24 @@
 import 'package:find_your_makeup/model/product.dart';
 import 'package:find_your_makeup/services/makeup_service.dart';
+import 'package:find_your_makeup/util/colors.dart';
 import 'package:find_your_makeup/widgets/products_grid.dart';
 import 'package:flutter/material.dart';
 
-class MakeupList extends StatefulWidget {
+class MakeupListPage extends StatefulWidget {
 
-  const MakeupList({Key? key, required this.title}) : super(key: key);
+  const MakeupListPage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MakeupListState createState() => _MakeupListState();
+  _MakeupListPageState createState() => _MakeupListPageState();
 }
 
-class _MakeupListState extends State<MakeupList> with SingleTickerProviderStateMixin {
+class _MakeupListPageState extends State<MakeupListPage> with SingleTickerProviderStateMixin {
 
   var makeupService = MakeupService();
 
   late Future<List<Product>> productsOfBrand;
-
 
   @override
   void initState() {
@@ -32,7 +32,6 @@ class _MakeupListState extends State<MakeupList> with SingleTickerProviderStateM
     productsOfBrand = makeupService.listProductsOfBrand(brand);
 
 
-
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -43,9 +42,9 @@ class _MakeupListState extends State<MakeupList> with SingleTickerProviderStateM
             future: productsOfBrand,
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return CircularProgressIndicator();
+                return CircularProgressIndicator(color: PalleteColors.darkPink, backgroundColor: PalleteColors.clearPink,);
               } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
+                return Text('${snapshot.error}', style: TextStyle(fontWeight: FontWeight.bold),);
               } else {
                 return Expanded(
                   child: ProductsGridWidget(products: snapshot.data!),
